@@ -9,37 +9,41 @@ var tasks = []
 var btns = []
 var yourNotes = []
 var yourTasks = []
-var numberOfTasks = 0
 var i = 0
 
 function orangeTask() {
     bgColor = "#FDA769"
     ballTop = (window.innerHeight - 230) / 2 + 20
-    verify()
+    createBall()
+    createTask()
 }
 
 function greenTask() {
     bgColor = "#CDE990"
     ballTop = (window.innerHeight - 230) / 2 + 60
-    verify()
+    createBall()
+    createTask()
 }
 
 function redTask() {
     bgColor = "#F55050"
     ballTop = (window.innerHeight - 230) / 2 + 100
-    verify()
+    createBall()
+    createTask()
 }
 
 function blueTask() {
     bgColor = "#AEE2FF"
     ballTop = (window.innerHeight - 230) / 2 + 140
-    verify()
+    createBall()
+    createTask()
 }
 
 function purpleTask() {
     bgColor = "#A084DC"
     ballTop = (window.innerHeight - 230) / 2 + 180
-    verify()
+    createBall()
+    createTask()
 }
 
 function createBall() {
@@ -167,25 +171,7 @@ function makeBtnWork() {
 
             setTimeout(() => {
                 document.getElementById("container").removeChild(tasks[j])
-                yourNotes.remove(yourNotes[j])
-                numberOfTasks--
             }, 1000)
         })
-    }
-}
-
-function verify() {
-    if (numberOfTasks == 0) {
-        createBall()
-        createTask()
-        numberOfTasks ++
-    } else {
-        if (yourNotes[numberOfTasks - 1].value != "") {
-            createBall()
-            createTask()
-            numberOfTasks++
-        } else {
-            alert("You don't add your task")
-        }
     }
 }
