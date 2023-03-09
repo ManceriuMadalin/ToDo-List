@@ -8,41 +8,38 @@ var yourNote = document.createElement("textarea")
 var tasks = []
 var btns = []
 var yourNotes = []
+var yourTasks = []
+var numberOfTasks = 0
 var i = 0
 
 function orangeTask() {
     bgColor = "#FDA769"
     ballTop = (window.innerHeight - 230) / 2 + 20
-    createBall()
-    createTask()
+    verify()
 }
 
 function greenTask() {
     bgColor = "#CDE990"
     ballTop = (window.innerHeight - 230) / 2 + 60
-    createBall()
-    createTask()
+    verify()
 }
 
 function redTask() {
     bgColor = "#F55050"
     ballTop = (window.innerHeight - 230) / 2 + 100
-    createBall()
-    createTask()
+    verify()
 }
 
 function blueTask() {
     bgColor = "#AEE2FF"
     ballTop = (window.innerHeight - 230) / 2 + 140
-    createBall()
-    createTask()
+    verify()
 }
 
 function purpleTask() {
     bgColor = "#A084DC"
     ballTop = (window.innerHeight - 230) / 2 + 180
-    createBall()
-    createTask()
+    verify()
 }
 
 function createBall() {
@@ -75,7 +72,7 @@ function createSecondShadow() {
 
 function moveBall() {
     ball.animate({
-        left: "262.5px",
+        left: "262.5px", 
         top: "287px"
     }, {
         duration: 1000,
@@ -170,7 +167,25 @@ function makeBtnWork() {
 
             setTimeout(() => {
                 document.getElementById("container").removeChild(tasks[j])
+                yourNotes.remove(yourNotes[j])
+                numberOfTasks--
             }, 1000)
         })
+    }
+}
+
+function verify() {
+    if (numberOfTasks == 0) {
+        createBall()
+        createTask()
+        numberOfTasks ++
+    } else {
+        if (yourNotes[numberOfTasks - 1].value != "") {
+            createBall()
+            createTask()
+            numberOfTasks++
+        } else {
+            alert("You don't add your task")
+        }
     }
 }
