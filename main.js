@@ -14,36 +14,31 @@ var i = 0
 function orangeTask() {
     bgColor = "#FDA769"
     ballTop = (window.innerHeight - 230) / 2 + 20
-    createBall()
-    createTask()
+    verify()
 }
 
 function greenTask() {
     bgColor = "#CDE990"
     ballTop = (window.innerHeight - 230) / 2 + 60
-    createBall()
-    createTask()
+    verify()
 }
 
 function redTask() {
     bgColor = "#F55050"
     ballTop = (window.innerHeight - 230) / 2 + 100
-    createBall()
-    createTask()
+    verify()
 }
 
 function blueTask() {
     bgColor = "#AEE2FF"
     ballTop = (window.innerHeight - 230) / 2 + 140
-    createBall()
-    createTask()
+    verify()
 }
 
 function purpleTask() {
     bgColor = "#A084DC"
     ballTop = (window.innerHeight - 230) / 2 + 180
-    createBall()
-    createTask()
+    verify()
 }
 
 function createBall() {
@@ -169,9 +164,26 @@ function makeBtnWork() {
                 fill: "forwards"
             })
 
+            for (let p = j; p < btns.length; p++) {
+                yourNotes[p] = yourNote[p + 1]
+            }
+            yourNotes.pop()
+
             setTimeout(() => {
                 document.getElementById("container").removeChild(tasks[j])
             }, 1000)
         })
+    }
+}
+
+function verify() {
+    if ((yourNotes.length == 0) || (yourNotes[yourNotes.length - 1] === undefined)) {
+        createBall()
+        createTask()
+    } else if (yourNotes[yourNotes.length - 1].value != "") {
+        createBall()
+        createTask()
+    } else {
+        alert("You forget to add your task!")
     }
 }
